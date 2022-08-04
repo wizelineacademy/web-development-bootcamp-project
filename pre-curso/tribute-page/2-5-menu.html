@@ -27,6 +27,34 @@
             align-items: center;
         }
 
+        #navigation-bar ul {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        #navigation-bar li {
+            display: inline-block;
+        }
+
+        #navigation-bar li a {
+            display: block;
+            color: #665;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navigation-bar li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        #navigation-bar li a.active {
+            color: #fff;
+            background-color: #665;
+        }
+
         #main-content-container {
             display: flex;
         }
@@ -120,8 +148,12 @@
     <p>1930 - 2002</p>
 </header>
 
-<nav id="navigation-bar">
-    Menu
+<nav id="navigation-bar" class="navigation-bar">
+    <ul>
+        <li><a class="active" href="index.html">Inicio</a></li>
+        <li><a href="#">Página 2</a></li>
+        <li><a href="#">Página 3</a></li>
+    </ul>
 </nav>
 
 <div id="main-content-container">
