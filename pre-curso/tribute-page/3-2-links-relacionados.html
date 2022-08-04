@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ejemplo layout flexbox</title>
     <style>
         html, body {
@@ -27,18 +27,105 @@
             align-items: center;
         }
 
+        #navigation-bar ul {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        #navigation-bar li {
+            display: inline-block;
+        }
+
+        #navigation-bar li a {
+            display: block;
+            color: #665;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navigation-bar li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        #navigation-bar li a.active {
+            color: #fff;
+            background-color: #665;
+        }
+
+        #navigation-bar .menu__hamburger-icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            #navigation-bar li:not(:first-child) {
+                display: none;
+            }
+
+            #navigation-bar li.menu__hamburger-icon {
+                display: block;
+                float: right;
+            }
+
+            #navigation-bar.responsive {
+                position: relative;
+            }
+
+            #navigation-bar.responsive .menu__hamburger-icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            #navigation-bar.responsive .menu__hamburger-icon a {
+                color: #fff;
+            }
+
+            #navigation-bar.responsive li {
+                float: none;
+                display: block !important;
+            }
+
+            #navigation-bar.responsive li a {
+                text-align: left;
+            }
+        }
+
         #main-content-container {
             display: flex;
         }
 
         #links-sidebar {
             flex: 2;
-            background: pink
+            padding: 10px;
+        }
+
+        #links-sidebar ul {
+            padding: 0 0 0 10px;
+        }
+
+        #links-sidebar li {
+            list-style: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            #links-sidebar {
+                display: none;
+            }
         }
 
         #main-content {
             flex: 6;
             padding: 10px 20% 10px 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #main-content {
+                padding-right: 10px;
+            }
+
         }
 
         .main-content__img--full-width {
@@ -78,7 +165,31 @@
             margin-left: 10px;
         }
 
-        a{
+        input[type=email], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 3px solid #ccc;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        input[type=email]:focus, textarea:focus {
+            border: 3px solid #555;
+        }
+
+        input[type=submit] {
+            background: #666655;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        a {
             text-decoration: none;
             color: inherit;
         }
@@ -87,7 +198,19 @@
             text-decoration: underline;
             text-underline-offset: 3px;
         }
+
     </style>
+
+    <script>
+        function myFunction() {
+            const navigationBar = document.getElementById("navigation-bar");
+            if (navigationBar.className === "navigation-bar") {
+                navigationBar.className += " responsive";
+            } else {
+                navigationBar.className = "navigation-bar";
+            }
+        }
+    </script>
 </head>
 <body>
 <header id="header">
@@ -95,13 +218,29 @@
     <p>1930 - 2002</p>
 </header>
 
-<nav id="navigation-bar">
-    Menu
+<nav id="navigation-bar" class="navigation-bar">
+    <ul>
+        <li><a class="active" href="index.html">Inicio</a></li>
+        <li><a href="#">Página 2</a></li>
+        <li><a href="#">Página 3</a></li>
+        <li class="menu__hamburger-icon">
+            <a href="javascript:void(0);" onclick="myFunction()">
+                <i class="lni lni-menu"></i>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <div id="main-content-container">
     <aside id="links-sidebar">
-        Links relacionados
+        <h2>Sitios de interés</h2>
+        <ul>
+            <li><a href="#">Sitio 1</a></li>
+            <li><a href="#">Sitio 2</a></li>
+            <li><a href="#">Sitio 3</a></li>
+            <li><a href="#">Sitio 4</a></li>
+            <li><a href="#">Sitio 5</a></li>
+        </ul>
     </aside>
     <section id="main-content">
         <img src="Edsger_Dijkstra_1994.jpg" alt="Edsger Dijkstra 1994" class="main-content__img--full-width">
@@ -151,6 +290,17 @@
     </div>
     <div class="footer__contact-form footer__section">
         <h2>Contacto</h2>
+        <div>
+            <form>
+                <label for="contactEmail"> Correo electronico:</label>
+                <input id="contactEmail" required type="email" placeholder="Ingresa tu correo electronico">
+
+                <label for="contactMessage"> Mensaje:</label>
+                <textarea id="contactMessage" required rows="4" cols="50"> </textarea>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
     </div>
     <div class="footer__more-sites footer__section">
         <h2>Otros de mis sitios</h2>

@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ejemplo layout flexbox</title>
     <style>
         html, body {
@@ -25,6 +25,45 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        #navigation-bar ul {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #e7e7e7;
+            background-color: #f3f3f3;
+        }
+
+        #navigation-bar li {
+            display: inline-block;
+        }
+
+        #navigation-bar li a {
+            display: block;
+            color: #665;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #navigation-bar li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        #navigation-bar li a.active {
+            color: #fff;
+            background-color: #665;
+        }
+
+        #navigation-bar .menu__hamburger-icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            #navigation-bar .menu__hamburger-icon {
+                display: block;
+                float: right;
+            }
         }
 
         #main-content-container {
@@ -58,6 +97,60 @@
             align-items: center;
             flex-direction: column;
         }
+
+        .social__networks {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social__network {
+            display: flex;
+            align-items: center;
+        }
+
+        .social__icon {
+            font-size: 32px;
+        }
+
+        .social__icon-handler {
+            margin-left: 10px;
+        }
+
+        input[type=email], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 3px solid #ccc;
+            transition: 0.5s;
+            outline: none;
+        }
+
+        input[type=email]:focus, textarea:focus {
+            border: 3px solid #555;
+        }
+
+        input[type=submit] {
+            background: #666655;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
     </style>
 </head>
 <body>
@@ -66,8 +159,17 @@
     <p>1930 - 2002</p>
 </header>
 
-<nav id="navigation-bar">
-    Menu
+<nav id="navigation-bar" class="navigation-bar">
+    <ul>
+        <li><a class="active" href="index.html">Inicio</a></li>
+        <li><a href="#">Página 2</a></li>
+        <li><a href="#">Página 3</a></li>
+        <li class="menu__hamburger-icon">
+            <a>
+                <i class="lni lni-menu"></i>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <div id="main-content-container">
@@ -105,11 +207,34 @@
     <div class="footer__social footer__section">
         <h2>Mis redes</h2>
 
-        <i class="lni lni-github-original social__icon"></i>
+        <div class="social__networks">
+            <div class="social__network">
+                <span class="social__icon-container"><i class="lni lni-github-original social__icon"></i></span>
+                <span class="social__icon-handler"> <a href="https://github.com/nomarlo"> nomarlo </a> </span>
+            </div>
+
+            <div class="social__network">
+                <span class="social__icon-container"><i class="lni lni-linkedin-original social__icon"></i></span>
+                <span class="social__icon-handler">
+                    <a href="https://www.linkedin.com/in/noe-l%C3%B3pez-hern%C3%A1ndez/"> Noé López </a>
+                </span>
+            </div>
+        </div>
 
     </div>
     <div class="footer__contact-form footer__section">
         <h2>Contacto</h2>
+        <div>
+            <form>
+                <label for="contactEmail"> Correo electronico:</label>
+                <input id="contactEmail" required type="email" placeholder="Ingresa tu correo electronico">
+
+                <label for="contactMessage"> Mensaje:</label>
+                <textarea id="contactMessage" required rows="4" cols="50"> </textarea>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
     </div>
     <div class="footer__more-sites footer__section">
         <h2>Otros de mis sitios</h2>
