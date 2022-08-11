@@ -79,6 +79,7 @@ if (compraRealizada2 == true || pisoBarrido2 == true) {
 }
 
 console.log('El dinero de tu hermanito es:', dinero2);
+
 // YOB = Year of Birth
 let YOB = 1999;
 const d = new Date();
@@ -88,29 +89,50 @@ let CY = d.getFullYear();
 for (let year = YOB; year <= CY; year++) {
   if (year == YOB) {
     console.log('En ' + year + ' yo nací');
-  }
-  else if(year-YOB==1){
+  } else if (year - YOB == 1) {
     console.log('En ' + year + ' yo tenía ' + (year - YOB) + ' año');
-  }
-   else if (year == CY) {
+  } else if (year == CY) {
     console.log('En el ' + year + ' yo tendré ' + (year - YOB) + ' años');
   } else {
     console.log('En ' + year + ' yo tenía ' + (year - YOB) + ' años');
   }
 }
-let year = YOB;
-while(year<=CY){
-    let age = year-YOB;
-    if (year == YOB) {
-        console.log('En ' + year + ' yo nací');
-      }
-      else if(age==1){
-        console.log('En ' + year + ' yo tenía ' + age + ' año');
-      }
-       else if (year == CY) {
-        console.log('En el ' + year + ' yo tendré ' + age + ' años');
-      } else {
-        console.log('En ' + year + ' yo tenía ' + age + ' años');
-      }
-      year++;
+
+for (let num = 0; num <= 35; num++) {
+  console.log('No debo de comerme el lonche de mis compañeros');
 }
+
+let year = YOB;
+while (year <= CY) {
+  let age = year - YOB;
+  if (year == YOB) {
+    console.log('En ' + year + ' yo nací');
+  } else if (age == 1) {
+    console.log('En ' + year + ' yo tenía ' + age + ' año');
+  } else if (year == CY) {
+    console.log('En el ' + year + ' yo tendré ' + age + ' años');
+  } else {
+    console.log('En ' + year + ' yo tenía ' + age + ' años');
+  }
+  year++;
+}
+
+// function aCelsius(fahrenheit) {
+//     return (5/9) * (fahrenheit-32);
+// }
+
+const aCelsius = (fahrenheit) => (5 / 9) * (fahrenheit - 32);
+console.log(aCelsius(100));
+
+const tocarNota = ()=> {
+  // Obtenemos la nota
+  // Reseteamos la ejecución de la nota
+  // Utilizamos el método play de la nota
+  // Añadimos la clase active
+  // Agregamos un event listener al evento ended
+    // Cuando termine de reproducirse el sonido, removemos la clase active
+}
+
+const keys = document.querySelectorAll('.key');
+const whiteKeys = document.querySelectorAll('.key.white');
+const blackKeys = document.querySelectorAll('.key.black');
